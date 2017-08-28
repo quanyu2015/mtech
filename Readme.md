@@ -5,7 +5,8 @@ Our target hotel is the [Hard Rock Hotel](https://www.tripadvisor.com.sg/Hotel_R
 
 ## Web scraping
 Architecture of scraping:  
-<img src="/docs/trip.png" width = "400">
+<img src="/docs/trip.png" width = "300">  
+  
 Source code:  
 [https://github.com/quanyu2015/mtech/blob/master/trip2.2.py](https://github.com/quanyu2015/mtech/blob/master/trip2.2.py)
 
