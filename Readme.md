@@ -1,5 +1,7 @@
+# 1. Web data mining
+
 ## Introduction  
-Our business goal is to identify potential customers that are willing to provide good ratings of our target hotel. To accomplish this, we scraped user and review data from TripAdvisor and build a random forest model for predicting user ratings. From this model, we found that the percentage of good ratings of a customer in his/her previous ratings, the number of cities visited, and the number of photos shared are the most important features.  
+Our business goal is to help identify customers that are willing to provide good ratings of our target hotel, so that we can train our front desk receptionist to boost hotel's ratings. To accomplish this, we scraped user and review data from TripAdvisor and build a random forest model for predicting user ratings. From this model, we found that the percentage of good ratings of a customer in his/her previous ratings, the number of cities visited, and the number of photos shared are the most important features.  
   
 Our target hotel is the [Hard Rock Hotel](https://www.tripadvisor.com.sg/Hotel_Review-g294264-d1447339-Reviews-Hard_Rock_Hotel_Singapore-Sentosa_Island.html) located on Sentosa. And this analytics procedure can be easily adapted to any hotel.
 
@@ -16,3 +18,6 @@ Source code:
 3. Predictive model  
 [https://github.com/quanyu2015/mtech/blob/master/trip_analytics_2.1.ipynb](https://github.com/quanyu2015/mtech/blob/master/trip_analytics_2.1.ipynb)
 
+# 2. Web log analysis
+
+[https://github.com/quanyu2015/mtech/blob/master/web_log.html](https://rawgit.com/quanyu2015/mtech/master/web_log.html)
