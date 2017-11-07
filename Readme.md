@@ -1,5 +1,5 @@
 # 1. Web data mining
-
+**Skills highlighted:** python, web crawling, MongoDB
 ## Introduction  
 Our business goal is to help identify customers that are willing to provide good ratings of our target hotel, so that we can train our front desk receptionist to boost hotel's ratings. To accomplish this, we scraped user and review data from TripAdvisor and build a random forest model for predicting user ratings. From this model, we found that the percentage of good ratings of a customer in his/her previous ratings, the number of cities visited, and the number of photos shared are the most important features.  
   
@@ -19,5 +19,5 @@ Source code:
 [https://github.com/quanyu2015/mtech/blob/master/trip_analytics_2.1.ipynb](https://github.com/quanyu2015/mtech/blob/master/trip_analytics_2.1.ipynb)
 
 # 2. Web log analysis
-
+**Skills highlighted:** R, R Markdown, data vasualization, association rules mining
 [https://github.com/quanyu2015/mtech/blob/master/web_log.html](https://rawgit.com/quanyu2015/mtech/master/web_log.html)
