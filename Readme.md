@@ -19,5 +19,6 @@ Source code:
 [https://github.com/quanyu2015/mtech/blob/master/trip_analytics_2.1.ipynb](https://github.com/quanyu2015/mtech/blob/master/trip_analytics_2.1.ipynb)
 
 # 2. Web log analysis
-**Skills highlighted:** R, R Markdown, data vasualization, association rules mining
+**Skills highlighted:** R, R Markdown, data vasualization, association rules mining   
+
 [https://github.com/quanyu2015/mtech/blob/master/web_log.html](https://rawgit.com/quanyu2015/mtech/master/web_log.html)
