@@ -1,0 +1,260 @@
+---
+title: "Web log analysis"
+author: QUAN YU
+output: 
+  html_document:
+    toc: TRUE
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    toc_depth: 3
+    theme: united
+    highlight: tango
+    df_print: paged
+---
+<style>
+body {
+text-align: justify}
+</style>
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "~/Desktop/web_analytics/PKDD/")
+options(width = 120)
+```
+
+## 1. Introduction
+
+These data comes from a Czech company running several internet shops. 
+The log data cover the traffic on the web server of about three weeks. 
+This represents about 3 mil. records (each record is a single page view). 
+The stored data allow to derive the products (the internet shop is oriented on electronics), 
+type of page (such as shopping cart or detail of product), and internet shop (this info has been anonymised).  
+
+A generated ID is contained in the records, so identifying sessions (click-streams of single user) is easy. Details please see <http://lisp.vse.cz/challenge/CURRENT/>. 
+
+
+## 2. Preprocess
+```{r lib, cache=TRUE}
+library(arules)
+library(arulesViz)
+library(data.table)
+library(knitr)
+```
+
+```{r data, cache=TRUE, rows.print=5, pages.print=6, max.print=50}
+# each text file is generated from a clickstream directory
+a1 = fread("clickstream1.txt")
+a2 = fread("clickstream2.txt")
+a3 = fread("clickstream3.txt")
+a4 = fread("clickstream4.txt")
+data = rbindlist(list(a1, a2, a3, a4))
+dim(data)
+# kable(data[1:10])
+data
+
+preprocess <- function(train) {
+  x = train[,2:5]
+  xu <- x[!duplicated(x),]
+  xu$item[xu$ProductBrand != "null"] = paste0("b=", xu$ProductBrand[xu$ProductBrand != "null"])
+  xu$item[xu$ProductCate != "null"] = paste0("c=", xu$ProductCate[xu$ProductCate != "null"])
+  xu$item[xu$pageType == "kosik"] = "shop"
+  out = na.omit(xu)[, c(1,5)]
+  return(out)
+}
+
+# data is the transaction format we need
+# sort(unique(data$item))  # any na?
+data = preprocess(data)
+dim(data)
+data
+```
+
+Now we split data into train/validation/test subsets with ratio 6/2/2. 
+```{r prep, cache=TRUE}
+sid = unique(data$sessionID)
+# split sid
+set.seed(100)
+idx = sample.int(5, length(sid), replace = T)
+train_sid = sid[which(idx >= 3)]
+valid_sid = sid[which(idx == 1)]
+test_sid  = sid[which(idx == 2)]
+cat(length(train_sid), length(valid_sid), length(test_sid))
+
+train = as.data.frame(data[sessionID %in% train_sid])
+valid = as.data.frame(data[sessionID %in% valid_sid])
+test  = as.data.frame(data[sessionID %in% test_sid])
+cat(nrow(train), nrow(valid), nrow(test))
+
+# remove shop
+train_sub1 = subset(train, item != "shop")
+# remove product categories
+train_sub2 = train[-grep("c=", train$item),]
+# remove brands
+train_sub3 = train[-grep("b=", train$item),]
+
+trainegs <- as(split(train_sub1[,"item"], train_sub1[,"sessionID"]), "transactions")
+summary(trainegs)
+itemFrequencyPlot(trainegs,topN=20,type="absolute")
+
+traineg2 <- as(split(train_sub2[,"item"], train_sub2[,"sessionID"]), "transactions")
+summary(traineg2)
+itemFrequencyPlot(traineg2,topN=20,type="absolute")
+
+traineg3 <- as(split(train_sub3[,"item"], train_sub3[,"sessionID"]), "transactions")
+```  
+   
+Please note that items with "c=" are product categories, "b=" are brands and "shop" are the shopping cart.  
+
+## 3. Association rules
+### Product category and brands
+```{r rule1, cache=TRUE}
+rules <- apriori(trainegs, parameter = list(supp=0.001, conf=0.5, minlen=2, maxlen=2))
+summary(rules)
+inspect(head(rules, n = 9, by = "confidence"))
+```
+### Brands and shopping cart
+```{r rule2, cache=TRUE}
+rules2 <- apriori(traineg2, parameter = list(supp=0.001, conf=0.01, minlen=2))
+inspect(sort(subset(rules2, subset = rhs %in% "shop"), by = "confidence"))
+```
+### Product category and shopping cart
+```{r rule3, cache=TRUE}
+rules3 <- apriori(traineg3, parameter = list(supp=0.001, conf=0.01, minlen=2))
+inspect(sort(subset(rules3, subset = rhs %in% "shop"), by = "confidence"))
+```
+
+From the association rules listed above, we found that the associations between brands and shopping cart, and between product category and shopping cart are not reliable. Therefore, we only consider association between product category and brands in the following analysis.  
+
+## 4. Make predictions
+Define two functions first.
+```{r func}
+# execute ruleset using item as rule antecedent (handles single item antecedents only)
+makepreds <- function(item, rulesDF) {
+  antecedent = paste("{",item,"} =>",sep="") 
+  firingrules = rulesDF[grep(antecedent, rulesDF$rules,fixed=TRUE),1]
+  gsub(" ","",toString(sub("\\}","",sub(".*=> \\{","",firingrules))))
+}
+
+# compare items bought with predictions
+comparepds <- function(items, preds) {
+  set1 = strsplit(items, ",")[[1]]
+  set2 = strsplit(preds, ",")[[1]]
+  n_item = length(set1)
+  n_pred = length(set2)
+  n_correct = length(intersect(set1, set2))
+  list(n_item, n_pred, n_correct)
+}
+```
+
+Make predictions in the following using validation data.
+
+```{r pred, cache=TRUE}
+#execute rules against test data
+rulesDF = as(rules,"data.frame")
+testegs = valid
+colnames(testegs) <- c("basketID","items")
+testegs$preds = apply(testegs,1,function(X) makepreds(X["items"], rulesDF))
+head(testegs)
+
+# keep only basketIDs with at least one prediction
+sid_sub = unique(testegs[testegs$preds != "",]$basketID)
+testegs = as.data.table(subset(testegs, basketID %in% sid_sub))
+head(testegs)
+
+# extract unique items bought and predictions for each test user
+userpreds = testegs[,.(items = paste(items, collapse = ","),
+                       preds = paste(unique(preds[preds != ""]), collapse = ",")),
+                       by = basketID]
+head(userpreds)
+
+# count how many items bought, predictions made, and how many predictions are correct
+correctpreds = userpreds[, comparepds(items, preds), by = basketID]
+head(correctpreds)
+
+# count total number of unique predictions made
+result = colSums(correctpreds[, -1])
+result
+totalitems = result["V1"] 
+totalpreds = result["V2"]
+totcorrect = result["V3"]
+
+precision = totcorrect*100/totalpreds
+recall    = totcorrect*100/totalitems
+cat("precision=", precision, "%, recall=", recall, "%, total predictions=", totalpreds)
+```
+## 5. parameter tunning
+We will trying different confidence values and find out which one has the highest accuracy.
+```{r tune, cache=TRUE}
+rules <- apriori(trainegs, parameter = list(supp=0.001, conf=0.005, minlen=2, maxlen=2))
+rulesDF = as(rules,"data.frame")
+range(rulesDF$confidence)
+```
+```{r}
+# Define a function that measures the overall performance
+performance <- function(conf, supp, dataset){
+  rules.sub <- subset(rules, confidence > conf & support > supp)
+  n_rules = length(rules.sub)
+  subDF = as(rules.sub,"data.frame")
+  valid_tmp = dataset
+  colnames(valid_tmp) <- c("basketID","items")
+  valid_tmp$preds = apply(valid_tmp,1,function(X) makepreds(X["items"], subDF))
+  # only consider sessions with a predicted value
+  # sid_sub = unique(valid_tmp[valid_tmp$preds != "",]$basketID)
+  # tmpegs = as.data.table(subset(valid_tmp, basketID %in% sid_sub))
+  tmpegs = as.data.table(valid_tmp)
+  userpreds = tmpegs[,.(items = paste(items, collapse = ","),
+                       preds = paste(unique(preds[preds != ""]), collapse = ",")),
+                       by = basketID]
+  correctpreds = userpreds[, comparepds(items, preds), by = basketID]
+  result = colSums(correctpreds[, -1])
+  totalitems = as.integer(result["V1"]) 
+  totalpreds = as.integer(result["V2"])
+  totcorrect = as.integer(result["V3"])
+  precision  = totcorrect / totalpreds
+  recall     = totcorrect / totalitems
+  F1 = 2 * precision * recall / (precision + recall)
+  return(data.frame(support = supp, confidence = conf, n_rules, precision, recall, F1, totalpreds, totcorrect))
+}
+```
+F1 score is a measure that combines precision and recall. It is defined as the harmonic mean of precision and recall <https://en.wikipedia.org/wiki/Precision_and_recall#F-measure>.
+
+```{r output, cache=TRUE}
+# predict in a paralell way
+library(foreach)
+library(doMC)
+registerDoMC(4)
+out = foreach(supp = c(0.001, 0.004, 0.007), .combine = rbind) %:% 
+    foreach(conf = seq(0.05, 0.35, 0.05), .combine = rbind) %dopar% {
+    sub = performance(conf, supp, valid)
+    sub
+}
+kable(out)
+```  
+
+```{r plot, fig.width=5, fig.height=3}
+library(ggplot2)
+out$support = as.factor(out$support)
+ggplot(out, aes(confidence, F1)) + geom_line(aes(colour = support)) +
+  ggtitle("Parameter tuning") + theme_bw()
+  # scale_x_continuous("Support", breaks = c(0.001, 0.004, 0.007))
+```
+
+## 6. Final performace  
+From alove analysis, we never used "test" data for model training or parameter tunning. Here we will use our test data (the held-back dataset) to evaluate the performance of our association rules.  
+```{r figure, echo=T, cache=TRUE, rows.print=10}
+rules.final = sort(subset(rules, confidence > 0.2 & support > 0.001), by="confidence")
+as(rules.final, "data.frame")
+# associations between brands and product categories
+rules.b2c = subset(rules.final, subset = lhs %pin% "b=")
+as(rules.b2c, "data.frame")
+# final performance
+kable(performance(0.2, 0.001, test))
+# This is an interactive widget which you can select, drag and zoom in/out.
+plot(rules.final, method="graph", engine="htmlwidget")
+```  
+
+## 7. Summary
+We identified association rules using training data, and then used validation data to tune the best support and confidence value. At last, we used the held-back testing dataset to measure the performance of our final 69 association rules used that are included in our product recommendation system. These rules generated 30,787 predictive items with 7,795 items correctly predicted. Therefore, the precision of our association model is 0.25 with 0.17 recall, and the overall F1 score is 0.20.    
+    
