@@ -21,7 +21,8 @@ Source code:
 # 2. Clinical image classification   
 **Skills highlighted:** Python, OpenCV, image processing, deep learning   
 
-Kaggle competition: [Intel & MobileODT Cervical Cancer Screening](https://www.kaggle.com/c/intel-mobileodt-cervical-cancer-screening)   
+Kaggle competition: [Intel & MobileODT Cervical Cancer Screening](https://www.kaggle.com/c/intel-mobileodt-cervical-cancer-screening)  
+Research manuscript:     
 [https://github.com/quanyu2015/mtech/blob/master/docs/segmentation.pdf](https://github.com/quanyu2015/mtech/blob/master/docs/segmentation.pdf)   
 
 # 3. Web log analysis
