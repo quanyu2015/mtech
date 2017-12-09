@@ -18,7 +18,15 @@ Source code:
 3. Predictive model  
 [https://github.com/quanyu2015/mtech/blob/master/trip_analytics_2.1.ipynb](https://github.com/quanyu2015/mtech/blob/master/trip_analytics_2.1.ipynb)
 
-# 2. Web log analysis
+# 2. Clinical image classification   
+**Skills highlighted:** Python, OpenCV, image processing, deep learning   
+
+Kaggle competition: [Intel & MobileODT Cervical Cancer Screening](https://www.kaggle.com/c/intel-mobileodt-cervical-cancer-screening)   
+[https://github.com/quanyu2015/mtech/blob/master/docs/segmentation.pdf](https://github.com/quanyu2015/mtech/blob/master/docs/segmentation.pdf)   
+
+# 3. Web log analysis
 **Skills highlighted:** R, R Markdown, data vasualization, association rules mining   
 
 [https://github.com/quanyu2015/mtech/blob/master/web_log.html](https://rawgit.com/quanyu2015/mtech/master/web_log.html)
+
+
