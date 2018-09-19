@@ -3,8 +3,10 @@
 Why e-commerce? A research by Temasek and Google in 2017 shows that (http).   
 
 ### Sentiment analysis
+[https://github.com/quanyu2015/mtech/blob/master/sentiment_6.ipynb](https://github.com/quanyu2015/mtech/blob/master/sentiment_6.ipynb)
 
 ### Market share of phone brands
+[https://github.com/quanyu2015/mtech/blob/master/market_phone.ipynb](https://github.com/quanyu2015/mtech/blob/master/market_phone.ipynb)
 
 ## 2. Nuclei segmentation using U-Net  
 
