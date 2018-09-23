@@ -1,6 +1,8 @@
 # 2018
 ## 1. Final year project
-Why e-commerce? A research by Temasek and Google in 2017 shows that (http).   
+Why E-commerce? A research by Temasek and Google in 2017 shows that the market size of E-commerce will rise to 88 billion by 2025. 
+<img src="/docs/market.png" width = "500">
+[Reference](https://www.blog.google/documents/16/Google-Temasek_e-Conomy_SEA_Spotlight_2017.pdf) 
 
 ### Sentiment analysis
 [https://github.com/quanyu2015/mtech/blob/master/sentiment_6.ipynb](https://github.com/quanyu2015/mtech/blob/master/sentiment_6.ipynb)
@@ -8,11 +10,13 @@ Why e-commerce? A research by Temasek and Google in 2017 shows that (http).
 ### Market share of phone brands
 [https://github.com/quanyu2015/mtech/blob/master/market_phone.ipynb](https://github.com/quanyu2015/mtech/blob/master/market_phone.ipynb)
 
-## 2. Nuclei segmentation using U-Net  
-
+## 2. Nuclei segmentation using U-Net
+Multi-organ nuclei segmentation challenge [MoNuSeg](https://monuseg.grand-challenge.org/)
 ### Image training data preprocssing
+[https://github.com/quanyu2015/mtech/blob/master/mask_2class.ipynb](https://github.com/quanyu2015/mtech/blob/master/mask_2class.ipynb)
 
 ### Segmentation model   
+[https://github.com/quanyu2015/mtech/blob/master/cnn_4.ipynb]([https://github.com/quanyu2015/mtech/blob/master/cnn_4.ipynb)
 
 ---  
 # 2017   
