@@ -1,9 +1,8 @@
 # 2018
 ## 1. Final year project
-Why E-commerce? A research by Temasek and Google in 2017 shows that the market size of E-commerce will rise to 88 billion by 2025.   
-    
-<img src="/docs/market.png" width = "500">  
-[Reference](https://www.blog.google/documents/16/Google-Temasek_e-Conomy_SEA_Spotlight_2017.pdf) 
+Why E-commerce? A research by Temasek and Google in 2017 shows that the market size of E-commerce will rise to 88 billion by 2025.    
+[E-conomy SEA Spotlight 2017](https://www.blog.google/documents/16/Google-Temasek_e-Conomy_SEA_Spotlight_2017.pdf)    
+<img src="/docs/market.png" width = "500">    
 
 ### Sentiment analysis
 [https://github.com/quanyu2015/mtech/blob/master/sentiment_6.ipynb](https://github.com/quanyu2015/mtech/blob/master/sentiment_6.ipynb)
