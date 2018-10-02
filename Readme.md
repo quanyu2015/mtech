@@ -20,7 +20,7 @@ Multi-organ nuclei segmentation challenge: [MoNuSeg](https://monuseg.grand-chall
 
 ---  
 # 2017   
-## 1. Boost hotel rating using web data [mining](#hotel)    
+## 1. Boost hotel rating using web data mining  
 **Skills highlighted:** python, web crawling, MongoDB
 ### Introduction  
 Our business goal is to help identify customers that are willing to provide good ratings of our target hotel, so that we can train our front desk receptionist to boost hotel's ratings. To accomplish this, we scraped user and review data from TripAdvisor and build a random forest model for predicting user ratings. From this model, we found that the percentage of good ratings of a customer in his/her previous ratings, the number of cities visited, and the number of photos shared are the most important features.  
