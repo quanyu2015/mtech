@@ -1,8 +1,8 @@
 # 2018
 ## 1. Final year project
-Why E-commerce? A research by Temasek and Google in 2017 shows that the market size of E-commerce will rise to 88 billion by 2025.    
-[E-conomy SEA Spotlight 2017](https://www.blog.google/documents/16/Google-Temasek_e-Conomy_SEA_Spotlight_2017.pdf)    
-<img src="/docs/market.png" width = "500">    
+Why E-commerce? A research by Temasek and Google in 2017 shows that the market size of E-commerce will rise to 88 billion by 2025. [E-conomy SEA Spotlight 2017](https://www.blog.google/documents/16/Google-Temasek_e-Conomy_SEA_Spotlight_2017.pdf)   
+     
+<img src="/docs/market.png" width = "650">    
 
 ### Sentiment analysis
 [https://github.com/quanyu2015/mtech/blob/master/sentiment_6.ipynb](https://github.com/quanyu2015/mtech/blob/master/sentiment_6.ipynb)
@@ -20,7 +20,7 @@ Multi-organ nuclei segmentation challenge: [MoNuSeg](https://monuseg.grand-chall
 
 ---  
 # 2017   
-## 1. Boost hotel rating using web data mining    
+## 1. Boost hotel rating using web data [mining](#hotel)    
 **Skills highlighted:** python, web crawling, MongoDB
 ### Introduction  
 Our business goal is to help identify customers that are willing to provide good ratings of our target hotel, so that we can train our front desk receptionist to boost hotel's ratings. To accomplish this, we scraped user and review data from TripAdvisor and build a random forest model for predicting user ratings. From this model, we found that the percentage of good ratings of a customer in his/her previous ratings, the number of cities visited, and the number of photos shared are the most important features.  
