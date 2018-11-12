@@ -10,8 +10,8 @@ Why E-commerce? A research by Temasek and Google in 2017 shows that the market s
 ### Market share of phone brands
 [https://github.com/quanyu2015/mtech/blob/master/market_phone.ipynb](https://github.com/quanyu2015/mtech/blob/master/market_phone.ipynb)
 
-## 2. Action classification using sensor data  
-UTD Multimodal Human Action Dataset ([UTD-MHAD](http://www.utdallas.edu/~cxc123730/UTD-MHAD.html)) was collected using a Microsoft Kinect and a wearable inertial sensor. Four types of sensordata were used in this study: RGB video, depth video, skeleton and inetial sensor data. A deep learning model was implemented to classify 27 different actions.     
+## 2. Action classification using CNN 
+UTD Multimodal Human Action Dataset ([UTD-MHAD](http://www.utdallas.edu/~cxc123730/UTD-MHAD.html)) was collected using a Microsoft Kinect and a wearable inertial sensor. Four types of sensor data were used in this study: RGB video, depth video, skeleton and inetial sensor data. A deep learning model was implemented to classify 27 different actions.     
 [https://github.com/quanyu2015/mtech/blob/master/04_fusion.ipynb](https://github.com/quanyu2015/mtech/blob/master/04_fusion.ipynb)
     
 References:   
