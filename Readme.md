@@ -10,7 +10,19 @@ Why E-commerce? A research by Temasek and Google in 2017 shows that the market s
 ### Market share of phone brands
 [https://github.com/quanyu2015/mtech/blob/master/market_phone.ipynb](https://github.com/quanyu2015/mtech/blob/master/market_phone.ipynb)
 
-## 2. Nuclei segmentation using U-Net
+## 2. Action classification using sensor data  
+UTD Multimodal Human Action Dataset ([UTD-MHAD](http://www.utdallas.edu/~cxc123730/UTD-MHAD.html)) was collected using a Microsoft Kinect and a wearable inertial sensor. Four types of sensordata were used in this study: RGB video, depth video, skeleton and inetial sensor data. A deep learning model was implemented to classify 27 different actions.     
+[https://github.com/quanyu2015/mtech/blob/master/04_fusion.ipynb](https://github.com/quanyu2015/mtech/blob/master/04_fusion.ipynb)
+    
+References:   
+[Skeleton based action recognition with convolutional neural network](https://ieeexplore.ieee.org/document/7486569)  
+[Human Action Recognition based on 3D Convolution Neural Networks from RGBD Videos](http://wscg.zcu.cz/WSCG2018/Poster/P31-full.PDF)  
+[Deep Convolutional and LSTM Recurrent Neural Networks for Multimodal Wearable Activity Recognition](https://www.mdpi.com/1424-8220/16/1/115/htm)
+[Predicting physical activity based on smartphone sensor data using CNN + LSTM](https://blog.goodaudience.com/predicting-physical-activity-based-on-smartphone-sensor-data-using-cnn-lstm-9182dd13b6bc)
+
+
+
+## 3. Nuclei segmentation using U-Net
 Multi-organ nuclei segmentation challenge: [MoNuSeg](https://monuseg.grand-challenge.org/).
 ### Image training data preprocssing
 [https://github.com/quanyu2015/mtech/blob/master/mask_2class.ipynb](https://github.com/quanyu2015/mtech/blob/master/mask_2class.ipynb)
