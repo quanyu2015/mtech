@@ -5,7 +5,7 @@ Why E-commerce? A research by Temasek and Google in 2017 shows that the market s
 <img src="/docs/market.png" width = "650">    
 
 ### Sentiment analysis
-[https://github.com/quanyu2015/mtech/blob/master/sentiment_6.ipynb](https://github.com/quanyu2015/mtech/blob/master/sentiment_6.ipynb)
+[https://github.com/quanyu2015/mtech/blob/master/sentiment_2019.ipynb](https://github.com/quanyu2015/mtech/blob/master/sentiment_2019.ipynb)
 
 ### Market share of phone brands
 [https://github.com/quanyu2015/mtech/blob/master/market_phone.ipynb](https://github.com/quanyu2015/mtech/blob/master/market_phone.ipynb)
@@ -49,7 +49,7 @@ Source code:
 ### Data analysis and modeling
 1. Load data from MongoDB to python
 2. Exploratory data analysis
-3. Predictive model  
+3. Predictive model     
 [https://github.com/quanyu2015/mtech/blob/master/trip_analytics_2.1.ipynb](https://github.com/quanyu2015/mtech/blob/master/trip_analytics_2.1.ipynb)
 
 ## 2. Clinical image classification   
