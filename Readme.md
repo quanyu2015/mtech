@@ -1,6 +1,8 @@
 # 2018
 ## 1. Final year project
-Why E-commerce? A research by Temasek and Google in 2017 shows that the market size of E-commerce will rise to 88 billion by 2025. [E-conomy SEA Spotlight 2017](https://www.blog.google/documents/16/Google-Temasek_e-Conomy_SEA_Spotlight_2017.pdf)   
+Why E-commerce? A research by Temasek and Google in 2017 shows that the market size of E-commerce will rise to 88 billion by 2025.   
+[E-conomy SEA Spotlight 2017](https://www.blog.google/documents/16/Google-Temasek_e-Conomy_SEA_Spotlight_2017.pdf)    
+[E-Conomy SEA 2018: Southeast Asia's internet economy hits an inflection point](https://www.thinkwithgoogle.com/intl/en-apac/tools-research/research-studies/e-conomy-sea-2018-southeast-asias-internet-economy-hits-inflection-point/)
      
 <img src="/docs/market.png" width = "650">    
 
