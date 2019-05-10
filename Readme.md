@@ -1,3 +1,9 @@
+# 2019   
+## 1. Text generation using LSTM   
+I used Harry Potter as the corpus to train a language model. Then this model can be used to generate new sentences.  
+[https://github.com/quanyu2015/mtech/blob/master/lstm_model_train.ipynb](https://github.com/quanyu2015/mtech/blob/master/lstm_model_train.ipynb)
+
+---    
 # 2018
 ## 1. Final year project
 Why E-commerce? A research by Temasek and Google in 2017 shows that the market size of E-commerce will rise to 88 billion by 2025.   
