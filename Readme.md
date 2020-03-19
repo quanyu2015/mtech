@@ -1,4 +1,11 @@
+# 2020  
+## 1. Twitter sentiment analysis using Doc2Vec  
+
+[https://github.com/quanyu2015/mtech/blob/master/doc2vec.ipynb](https://github.com/quanyu2015/mtech/blob/master/doc2vec.ipynb)
+
+---   
 # 2019   
+
 ## 1. Text generation using LSTM   
 I used Harry Potter as the corpus to train a language model. Then this model can be used to generate new sentences.  
 [https://github.com/quanyu2015/mtech/blob/master/lstm_model_train.ipynb](https://github.com/quanyu2015/mtech/blob/master/lstm_model_train.ipynb)    
